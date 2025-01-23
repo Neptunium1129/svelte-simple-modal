@@ -1,3 +1,6 @@
+# 2.0.1
+only use Svelte5
+
 # 2.0.0
 
 **BREAKING CHANGE:** Upgraded to Svelte v5. This change is unfortunately not backwards compatible with Svelte 3 or 4. If you want to use Svelte Simple Modal with Svelte v3 or v4, check out version 1 (https://github.com/flekschas/svelte-simple-modal/tree/v1) ([#119]https://github.com/flekschas/svelte-simple-modal/pull/119)
