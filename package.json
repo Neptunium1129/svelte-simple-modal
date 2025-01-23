@@ -1,65 +1,66 @@
 {
-  "name": "svelte-simple-modal",
+  "name": "@neptunium/svelte-simple-modal",
   "version": "2.0.1",
   "description": "A small and simple modal for only Svelte5",
-
-  "scripts": {
-    "dev": "vite dev",
-		"build": "vite build && npm run prepack",
-		"preview": "vite preview",
-		"prepack": "svelte-kit sync && svelte-package && publint",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"format": "prettier --write .",
-		"lint": "prettier --check ."
-  },
-  "files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
-	],
-	"sideEffects": [
-		"**/*.css"
-	],
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
-		}
-	},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flekschas/svelte-simple-modal.git"
-  },
   "keywords": [
     "svelte",
+    "svelte5",
     "modal",
     "popup",
     "dialog"
   ],
-  "author": "Fritz Lekschas",
-  "license": "MIT",
+  "homepage": "https://github.com/flekschas/svelte-simple-modal#readme",
   "bugs": {
     "url": "https://github.com/flekschas/svelte-simple-modal/issues"
   },
-  "homepage": "https://github.com/flekschas/svelte-simple-modal#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flekschas/svelte-simple-modal.git"
+  },
+  "license": "MIT",
+  "author": "Fritz Lekschas",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "svelte.config.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && npm run prepack",
+    "preview": "vite preview",
+    "prepack": "svelte-kit sync && svelte-package && publint",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^4.0.0",
+    "@sveltejs/kit": "^2.16.1",
+    "@sveltejs/package": "^2.3.9",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "publint": "^0.3.2",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.1.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
+  },
   "peerDependencies": {
     "svelte": "^5.0.0"
   },
-  "devDependencies": {
-		"@sveltejs/adapter-auto": "^4.0.0",
-		"@sveltejs/kit": "^2.16.1",
-		"@sveltejs/package": "^2.3.9",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"prettier": "^3.4.2",
-		"prettier-plugin-svelte": "^3.3.3",
-		"publint": "^0.3.2",
-		"svelte": "^5.0.0",
-		"svelte-check": "^4.1.4",
-		"typescript": "^5.7.3",
-		"vite": "^6.0.11"
-	}
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "svelte": "./dist/index.js"
 }
