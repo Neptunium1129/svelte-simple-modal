@@ -39,7 +39,7 @@
   
   const baseSetContext = svelte.setContext;
   
-  const baseIsTabbable = (node) =>
+  const baseIsTabbable = (node) => {
     node.tabIndex >= 0 &&
     !node.hidden &&
     !node.disabled &&
@@ -48,6 +48,7 @@
     Boolean(
       node.offsetWidth || node.offsetHeight || node.getClientRects().length
     );
+  }
   
   
   let {
