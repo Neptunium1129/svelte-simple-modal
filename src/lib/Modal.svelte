@@ -432,9 +432,7 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
       index += tabbable.length + (event.shiftKey ? -1 : 1);
       index %= tabbable.length;
   
-      if(tabbable[index]){
-        tabbable[index].focus();
-      }
+      tabbable[index]?.focus();
     }
   };
   
@@ -542,7 +540,7 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
           index += tabbable.length + (event?.shiftKey ? -1 : 1);
           index %= tabbable.length;
   
-          tabbable[index].focus();
+          tabbable[index]?.focus();
       }
      })
   </script>
