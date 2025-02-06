@@ -531,20 +531,9 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
   
      $effect(()=>{
         if (Component && modalWindow) {
-        // trap focus
           const nodes = modalWindow.querySelectorAll('*');
-          const tabbable = Array.from(nodes)
-            .filter(modalState.isTabbable)
-            .sort((a, b) => a.tabIndex - b.tabIndex);
-  
-          let index = tabbable.indexOf(document.activeElement);
-          if (index === -1 && event?.shiftKey) index = 0;
-  
-          index += tabbable.length + (event?.shiftKey ? -1 : 1);
-          index %= tabbable.length;
-  
-          tabbable[index]?.focus();
-      }
+          nodes[0]?.focus();
+        }
      })
   </script>
   
