@@ -40,13 +40,15 @@
   const baseSetContext = svelte.setContext;
   
   const baseIsTabbable = (node) => {
-    node.tabIndex >= 0 &&
-    !node.hidden &&
-    !node.disabled &&
-    node.style.display !== 'none' &&
-    node.type !== 'hidden' &&
-    Boolean(
-      node.offsetWidth || node.offsetHeight || node.getClientRects().length
+    return (
+      node.tabIndex >= 0 &&
+      !node.hidden &&
+      !node.disabled &&
+      node.style.display !== 'none' &&
+      node.type !== 'hidden' &&
+      Boolean(
+        node.offsetWidth || node.offsetHeight || node.getClientRects().length
+      )
     );
   }
   
@@ -303,7 +305,7 @@
   };
   
   
-  let modalState = $state(defaultState);;
+  let modalState = $state(defaultState);
   let Component = $state(null);
   let background = $state(null);
   let wrap  = $state(null);
@@ -433,6 +435,7 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
       index %= tabbable.length;
   
       tabbable[index]?.focus();
+      event.preventDefault();
     }
   };
   
@@ -486,7 +489,7 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
   let isMounted = $state(false);
   
   svelte.onMount(() => {
-    isMounted = true;
+	isMounted = true;
   });
     
     const openModal = () => {
@@ -569,7 +572,6 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
         class={modalState.classWindow}
         class:window={!unstyled}
         role="dialog"
-        tabindex='-1'
         aria-modal="true"
         aria-label={modalState.ariaLabelledBy ? null : modalState.ariaLabel || null}
         aria-labelledby={modalState.ariaLabelledBy || null}
@@ -583,7 +585,6 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
       >
         {#if modalState.closeButton}
           {#if isFunction(modalState.closeButton)}
-            <!-- <svelte:component this={modalState.closeButton} onClose={close} /> -->
             <button bind:this={modalState.closeButton} onClose={close}>X</button>
           {:else}
             <button
@@ -601,14 +602,12 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
           class:content={!unstyled}
           style={cssContent}
         >
-          <!-- <svelte:component this={Component} /> -->
           <Component />
         </div>
       </div>
     </div>
   </div>
   {/if}
-  <!-- <slot /> -->
   {@render children?.()}
   
   <style>
