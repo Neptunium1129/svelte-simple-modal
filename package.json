@@ -1,6 +1,6 @@
 {
   "name": "@neptunium/svelte-simple-modal",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "A small and simple modal for only Svelte5 Rune mode",
   "keywords": [
     "svelte",

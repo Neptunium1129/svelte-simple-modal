@@ -360,7 +360,7 @@
   let onClose = $state(toVoid);
   let onOpened = $state(toVoid);
   let onClosed = $state(toVoid);
-  let targetObj = $state(null);
+  
   /**
    * Open a modal.
    * @description Calling this method will close the modal. Additionally, it
@@ -368,15 +368,12 @@
    * @type {Open}
    */
   const open = (NewComponent, newProps = {}, options = {}, callbacks = {}) => {
+    
     Component = bind(NewComponent, newProps);
     modalState = { ...defaultState, ...options };
     updateStyleTransition();
     disableScroll();
-    
-    if(event?.target){
-      event?.target?.blur();
-    }
-  
+
     onOpen = (event) => {
       if (callbacks.onOpen) callbacks.onOpen(event);
     };
@@ -392,12 +389,9 @@
   };
   
 const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) => {
-  //Component = bind(NewComponent, newProps);
   Component = NewComponent;
-  //modalState = { ...defaultState, ...options };
   updateStyleTransition();
   disableScroll();
-
 };
   /**
    * Close the modal.
@@ -492,17 +486,6 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
 	isMounted = true;
   });
     
-    const openModal = () => {
-      if (isMounted == false && show) {
-        if (isFunction(show)) {
-          open(show);
-        } else {
-          close();
-        
-        }
-      }
-    }
-  
   $effect(() => {
   //For outside
       if (isFunction(show)  && show) {
@@ -517,7 +500,6 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
           open(show);
         } else {
           close();
-        
         }
       }
       return () => {
@@ -531,16 +513,18 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
   
      $effect(()=>{
         if (Component && modalWindow) {
-          const nodes = modalWindow.querySelectorAll('*');
-          nodes[0]?.focus();
-        }
+          if(isMounted){
+            const nodes = modalWindow.querySelectorAll('*');
+              nodes[0]?.focus();
+          }
+        } 
      })
   </script>
   
   <svelte:window onkeydown={handleKeydown} />
   
   {#if Component}
-  <div 
+  <div
     aria-hidden="true"
     id={modalState.id}
     class={modalState.classBg}
