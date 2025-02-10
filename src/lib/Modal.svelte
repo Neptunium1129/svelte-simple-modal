@@ -547,6 +547,7 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
         class={modalState.classWindow}
         class:window={!unstyled}
         role="dialog"
+        aria-hidden="true"
         aria-modal="true"
         aria-label={modalState.ariaLabelledBy ? null : modalState.ariaLabel || null}
         aria-labelledby={modalState.ariaLabelledBy || null}
