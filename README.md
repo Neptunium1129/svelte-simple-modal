@@ -1,5 +1,5 @@
 <h1 align="center">
-  Svelte Simple Modal
+  Svelte Simple Modal Only Svelte5 Rune Mode
 </h1>
 
 <div align="center">

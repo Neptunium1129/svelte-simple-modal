@@ -514,8 +514,10 @@ const openOutside = (NewComponent, newProps = {}, options = {}, callbacks = {}) 
      $effect(()=>{
         if (Component && modalWindow) {
           if(isMounted){
-            const nodes = modalWindow.querySelectorAll('*');
-              nodes[0]?.focus();
+            const nodes = modalWindow.querySelectorAll('.close');
+            if (nodes.length > 0) {
+              nodes[0].focus();
+            }
           }
         } 
      })
